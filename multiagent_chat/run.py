@@ -115,12 +115,13 @@ if __name__ == "__main__":
             "multiagent_chat/configs/environment_deployments.json"
         )
 
+        orchestrator_deployments[0].environment_deployments = environment_deployments
+        orchestrator_deployments[0].agent_deployments = agent_deployments
+
         # Create orchestrator run instance
         module_run = OrchestratorRun(
             inputs=input_params,
             deployment=orchestrator_deployments[0],
-            agent_deployments=agent_deployments,
-            environment_deployments=environment_deployments,
             consumer_id=naptha.user.id,
         )
         module_run.id = str(uuid.uuid4())
